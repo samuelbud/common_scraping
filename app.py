@@ -23,7 +23,7 @@ def get_votes():
         df.to_excel(f"downloads/{filename}", index=False)
         return send_from_directory(directory="downloads", path=filename, as_attachment=True)
     else:
-        return render_template("votes_table.html", data=df.to_dict(orient="records"))
+        return render_template("index.html", data=df.to_dict(orient="records"))
 
 
 def find_votes():

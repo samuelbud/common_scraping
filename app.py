@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/templates/index.html')
 def home():
     return "Welcome to the Voting Data Scraper! Visit /get_votes to scrape the votes and download the Excel file."
 

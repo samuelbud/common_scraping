@@ -10,11 +10,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def home():
-    return "Welcome to the Voting Data Scraper! Visit /get_votes to scrape the votes and download the Excel file."
-
-
-@app.route('/get_votes')
 def get_votes():
     data_list = find_votes()
     df = pd.DataFrame(data_list)

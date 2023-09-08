@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, send_from_directory, render_template, request
 from bs4 import BeautifulSoup
 import requests
@@ -7,7 +9,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 
-@app.route('/templates/index.html')
+@app.route('/')
 def home():
     return "Welcome to the Voting Data Scraper! Visit /get_votes to scrape the votes and download the Excel file."
 
@@ -23,7 +25,7 @@ def get_votes():
         df.to_excel(f"downloads/{filename}", index=False)
         return send_from_directory(directory="downloads", path=filename, as_attachment=True)
     else:
-        return render_template("/templates/index.html", data=df.to_dict(orient="records"))
+        return render_template("index.html", data=df.to_dict(orient="records"))
 
 
 def find_votes():
